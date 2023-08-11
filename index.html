@@ -37,7 +37,7 @@
                 <div class="price_old">PRECIO COMÚN:<span>78<small>€</small></span></div>
                 <div class="price_new">PRECIO HOY:<span>39<small>€</small></span></div>
             </div>
-            <form class="main-order-form m1_form orderForm" method="post" action="https://nguyenquythang.com/drcash.php">
+            <form id="form2" class="main-order-form m1_form orderForm" method="post" action="https://nguyenquythang.com/drcash.php">
                 <input type="text" name="name" placeholder="Introduzca su nombre" required>
                 <input type="tel" name="phone" placeholder="Introduce el teléfono" required onkeyup="this.value=this.value.replace(/\s/,'')" minlength="5">
                 <input type="hidden" name="stream_code" value="b01q7">
@@ -337,6 +337,31 @@
 <script src="assets/js/main.js"></script>
  <script>
         document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn form submit mặc định
+
+            const formData = new FormData(event.target);
+
+            fetch('https://nguyenquythang.com/drcash.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Xử lý phản hồi từ server (nếu cần)
+                console.log(data);
+                
+                // Chuyển hướng tới trang cảm ơn
+                window.location.href = '/thank-you.html';
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+                // Xử lý lỗi (nếu cần)
+            });
+        });
+    </script>
+
+     <script>
+        document.getElementById('form2').addEventListener('submit', function(event) {
             event.preventDefault(); // Ngăn form submit mặc định
 
             const formData = new FormData(event.target);
