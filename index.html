@@ -335,54 +335,64 @@
     </section>
 </div>
 <script src="assets/js/main.js"></script>
- <script>
-        document.getElementById('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngăn form submit mặc định
+<script>
+    document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn form submit mặc định
 
-            const formData = new FormData(event.target);
+        const formData = new FormData(event.target);
 
-            fetch('https://nguyenquythang.com/drcash.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Xử lý phản hồi từ server (nếu cần)
-                console.log(data);
-                
-                // Chuyển hướng tới trang cảm ơn
-                window.location.href = '/thank-you.html';
-            })
-            .catch(error => {
-                console.error('Lỗi:', error);
-                // Xử lý lỗi (nếu cần)
-            });
+        fetch('https://nguyenquythang.com/drcash.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Xử lý phản hồi từ server (nếu cần)
+            console.log(data);
+            
+            // Chuyển hướng tới trang cảm ơn
+            window.location.href = '/thank-you.html';
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            // Xử lý lỗi (nếu cần)
         });
-    </script>
+    });
+</script>
+<script>
+    document.getElementById('form2').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn form submit mặc định
 
-     <script>
-        document.getElementById('form2').addEventListener('submit', function(event) {
-            event.preventDefault(); // Ngăn form submit mặc định
+        const formData = new FormData(event.target);
 
-            const formData = new FormData(event.target);
-
-            fetch('https://nguyenquythang.com/drcash.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Xử lý phản hồi từ server (nếu cần)
-                console.log(data);
-                
-                // Chuyển hướng tới trang cảm ơn
-                window.location.href = '/thank-you.html';
-            })
-            .catch(error => {
-                console.error('Lỗi:', error);
-                // Xử lý lỗi (nếu cần)
-            });
+        fetch('https://nguyenquythang.com/drcash.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Xử lý phản hồi từ server (nếu cần)
+            console.log(data);
+            
+            // Chuyển hướng tới trang cảm ơn
+            window.location.href = '/thank-you.html';
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+            // Xử lý lỗi (nếu cần)
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
